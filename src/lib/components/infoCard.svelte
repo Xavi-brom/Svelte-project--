@@ -1,12 +1,21 @@
-<script>
-  export let title;
-</script>
+<div class="rounded-xl overflow-hidden border border-gray-200 bg-white shadow-sm">
+  
+  <!-- VIDEO -->
+  <!-- svelte-ignore a11y_media_has_caption -->
+  <video
+   src="/VID-20260103-WA0018.mp4"
+   autoplay
+   muted
+   loop
+   playsinline
+   class="">
+  </video>
 
-<div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition">
-  <h3 class="text-lg font-semibold text-gray-900">
-    {title}
-  </h3>
-  <p class="mt-2 text-sm text-gray-500">
-    Dit is een card
-  </p>
+
+  <!-- TEKST -->
+  <div class="p-4">
+    <h3 class="text-lg font-semibold text-gray-900">
+      Dit is mijn hond Beer die in de sneeuw rolt!
+    </h3>
+  </div>
 </div>
