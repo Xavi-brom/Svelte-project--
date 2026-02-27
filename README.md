@@ -1,58 +1,45 @@
-# Svelte library
+# Svelte website deployment (Docker)
 
-Everything you need to build a Svelte library, powered by [`sv`](https://npmjs.com/package/sv).
+Deze projectmap is klaar om de website als container te draaien.
 
-Read more about creating a library [in the docs](https://svelte.dev/docs/kit/packaging).
+## Vereisten
 
-## Creating a project
+- Docker Desktop (of Docker Engine + Compose)
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Lokaal draaien met Docker
 
-```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+```bash
+docker compose up -d --build
 ```
 
-## Developing
+Website: `http://localhost:3000`
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Logs bekijken:
 
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```bash
+docker compose logs -f
 ```
 
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
+Stoppen:
 
-## Building
-
-To build your library:
-
-```sh
-npm pack
+```bash
+docker compose down
 ```
 
-To create a production version of your showcase app:
+## Online deploy (VPS)
 
-```sh
-npm run build
+1. Installeer Docker + Docker Compose op je server.
+2. Kopieer deze projectmap naar de server.
+3. Start de container:
+
+```bash
+docker compose up -d --build
 ```
 
-You can preview the production build with `npm run preview`.
+4. Zet een reverse proxy (Nginx/Caddy/Traefik) voor poort `3000` voor je domeinnaam en SSL.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Bestanden
 
-## Publishing
-
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
-
-To publish your library to [npm](https://www.npmjs.com):
-
-```sh
-npm publish
-```
+- `Dockerfile`: bouwt en start de website met `vite preview` op poort `3000`.
+- `docker-compose.yml`: standaard service-config voor productieachtig draaien.
+- `.dockerignore`: houdt de build-context klein.
