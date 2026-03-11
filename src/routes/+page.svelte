@@ -6,6 +6,8 @@
 </script>
 
 <div class="flex flex-col items-center justify-center mt-5 gap-3">
+  <a href="/afspraken" class="text-blue-600 underline">Ga naar afspraken overzicht</a>
+
   <Welcome />
 
   <div class="mt-8">
